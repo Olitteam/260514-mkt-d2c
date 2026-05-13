@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>슬룸 마케팅 1팀 · 주간보고 4월5주차</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg:       #f5f4f1;
+  --card:     #ffffff;
+  --card2:    #f2f1ee;
+  --border:   rgba(0,0,0,0.08);
+  --border2:  rgba(0,0,0,0.15);
+  --ink:      #1a1a1a;
+  --ink2:     #4a4a4a;
+  --ink3:     #888888;
+  --v1:       #2563eb;   --v1bg: rgba(37,99,235,0.06);
+  --v2:       #16a34a;   --v2bg: rgba(22,163,74,0.06);
+  --done:     #16a34a;
+  --warn:     #d97706;   --warnbg: rgba(217,119,6,0.07);
+  --block:    #dc2626;   --blockbg: rgba(220,38,38,0.06);
+  --think:    #7c3aed;   --thinkbg: rgba(124,58,237,0.06);
+}
+
+html{font-size:14px}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+
+/* ── HEADER ── */
+.hdr {
+  background: var(--ink);
+  padding: 32px 56px 28px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.hdr-left {}
+.hdr-tag {
+  font-family:'Noto Sans KR',sans-serif; font-size:11px; letter-spacing:.14em;
+  color: rgba(255,255,255,0.35); text-transform:uppercase; margin-bottom:8px;
+}
+.hdr-title {
+  font-size:22px; font-weight:900; color:#fff; letter-spacing:-.02em;
+}
+.hdr-title em {color:#facc15; font-style:normal}
+.hdr-right {text-align:right}
+.hdr-week {
+  font-family:'Noto Sans KR',sans-serif; font-size:13px; font-weight:500;
+  color:rgba(255,255,255,0.7); margin-bottom:4px;
+}
+.hdr-meta {font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6}
+
+/* ── WRAPPER ── */
+.wrap {max-width:1200px; margin:0 auto; padding:40px 48px 100px}
+
+/* ── SECTION ── */
+.sec {margin-bottom:48px}
+.sec-hdr {
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:20px; padding-bottom:12px;
+  border-bottom:2px solid var(--border2);
+}
+.sec-num {
+  font-family:'Noto Sans KR',sans-serif; font-size:11px; font-weight:500;
+  color:var(--ink3); letter-spacing:.04em;
+}
+.sec-title {font-size:18px; font-weight:800; letter-spacing:-.01em}
+
+/* ── 액션 섹션 ── */
+.product-block {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; margin-bottom:14px; overflow:hidden;
+}
+.product-block-hdr {
+  padding:14px 20px; display:flex; align-items:center; gap:10px;
+  border-bottom:1px solid var(--border); background:var(--card2);
+}
+.product-block-body {padding:16px 20px; display:flex; flex-direction:column; gap:14px}
+
+.goal-product-tag {
+  font-size:11px; font-weight:700; letter-spacing:.07em; padding:2px 9px;
+  border-radius:20px; font-family:'Noto Sans KR',sans-serif;
+}
+.tag-v1 {background:var(--v1bg); color:var(--v1)}
+.tag-v2 {background:var(--v2bg); color:var(--v2)}
+
+.action-3col {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+}
+.action-col {
+  background: var(--card); border-radius: 8px; padding: 11px 13px;
+  border: 1px solid var(--border);
+}
+.action-col-title {
+  font-size: 10.5px; font-weight: 700; margin-bottom: 7px;
+  padding-bottom: 5px; border-bottom: 1px solid var(--border);
+}
+.action-col-title.goal   { color: var(--v1); }
+.action-col-title.result { color: var(--done); }
+.action-col-title.develop{ color: var(--warn); }
+.action-col-body {
+  font-size: 12.5px; color: var(--ink2); line-height: 1.7;
+}
+.action-col-body strong { color: var(--ink); font-weight: 700; }
+.result-tag {
+  display: inline-flex; align-items: center;
+  font-size: 10.5px; font-weight: 700; padding: 1px 8px; border-radius: 4px;
+  margin: 1px 2px 3px 0;
+}
+.result-tag.good { background: rgba(22,163,74,0.1);  color: var(--done); }
+.result-tag.mid  { background: rgba(217,119,6,0.1);  color: var(--warn); }
+.result-tag.bad  { background: rgba(220,38,38,0.1);  color: var(--block); }
+.result-tag.test { background: rgba(124,58,237,0.1); color: var(--think); }
+
+/* ── 액션 탭 ── */
+.act-tab-bar { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:0; }
+.act-tab-btn {
+  padding:6px 14px; border-radius:8px 8px 0 0; font-size:12px; font-weight:700;
+  border:1px solid var(--border); border-bottom:none;
+  background:var(--card2); color:var(--ink3); cursor:pointer; transition:all .15s;
+  font-family:'Noto Sans KR',sans-serif;
+}
+.act-tab-btn.active { background:var(--card); color:var(--ink); border-color:var(--border2); }
+.act-tab-panel {
+  display:none; padding:14px 0 0;
+}
+.act-tab-panel.active { display:block; }
+.act-camp-info{
+  background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:10px 14px;margin-bottom:12px;display:flex;flex-direction:column;gap:5px;
+}
+.act-camp-row{display:flex;align-items:flex-start;gap:10px;font-size:11.5px}
+.act-camp-label{
+  flex-shrink:0;width:90px;font-weight:700;color:var(--ink2);
+  font-family:'Noto Sans KR',sans-serif;font-size:10.5px;padding-top:1px;
+}
+.act-camp-val{color:var(--ink2);line-height:1.5}
+.act-camp-val .r-tag{
+  display:inline-block;font-size:10.5px;font-weight:700;
+  padding:1px 8px;border-radius:4px;
+  background:rgba(220,38,38,0.1);color:var(--block);
+}
+
+/* ── 캠페인 데이터 테이블 ── */
+.act-data-wrap{margin-top:16px;background:var(--card2);border-radius:10px;padding:14px 16px;border:1px solid var(--border)}
+.act-data-tbl{width:100%;border-collapse:collapse;font-size:12.5px;font-family:'Noto Sans KR',sans-serif}
+.act-data-tbl th{padding:7px 12px;font-size:11px;font-weight:700;color:var(--ink3);border-bottom:2px solid var(--border2);white-space:nowrap;text-align:left;background:var(--card2)}
+.act-data-tbl td{padding:8px 12px;color:var(--ink2);border-bottom:1px solid var(--border);font-size:12.5px;vertical-align:middle}
+.act-data-tbl tr:last-child td{border-bottom:none}
+.act-data-tbl .group-hdr td{
+  padding:5px 12px 4px;border-top:2px solid;
+  font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+}
+.act-data-tbl .group-hdr.camp     td{border-color:var(--ink2);background:#f7f5f2;color:var(--ink2)}
+.act-data-tbl .group-hdr.creative td{border-color:var(--done);background:rgba(22,163,74,0.06);color:var(--done)}
+.act-data-tbl .group-hdr.ttl      td{border-color:var(--v1);background:rgba(37,99,235,0.06);color:var(--v1)}
+.act-data-tbl .sep-row td{padding:0;height:6px;border-bottom:none;background:var(--bg)!important}
+.act-data-tbl .tag-camp    {font-size:10.5px;color:var(--ink3);font-weight:500}
+.act-data-tbl .tag-creative{font-size:10.5px;color:var(--done);font-weight:700}
+.act-data-tbl .tag-ttl     {font-size:10.5px;color:var(--v1);font-weight:700}
+.act-data-tbl .row-star     td{background:rgba(37,99,235,0.05)}
+.act-data-tbl .row-cr          {background:rgba(22,163,74,0.01)}
+.act-data-tbl .row-cr-star  td{background:rgba(22,163,74,0.06)}
+.act-data-tbl .row-ttl         {background:rgba(37,99,235,0.02)}
+.act-data-tbl .row-ttl-star td{background:rgba(37,99,235,0.06)}
+.act-data-tbl .row-star     td:first-child,
+.act-data-tbl tr.row-star   td:first-child{border-left:3px solid var(--v1)}
+.act-data-tbl .row-cr       td:first-child,
+.act-data-tbl .row-cr-star  td:first-child{border-left:3px solid var(--done)}
+.act-data-tbl .row-ttl      td:first-child,
+.act-data-tbl .row-ttl-star td:first-child{border-left:3px solid var(--v1)}
+.act-data-tbl tr:not(.row-star):not(.row-cr):not(.row-cr-star):not(.row-ttl):not(.row-ttl-star):not(.group-hdr):not(.sep-row) td:first-child{border-left:3px solid var(--ink3)}
+
+/* ── 목표 달성 테이블 ── */
+.goal-tbl{width:100%;border-collapse:collapse}
+.goal-tbl th{font-size:11px;font-weight:700;color:var(--ink2);background:var(--card2);padding:8px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+.goal-tbl td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink2);font-family:'Noto Sans KR',sans-serif}
+.goal-tbl th:nth-child(6),.goal-tbl td:nth-child(6){border-left:2px solid var(--border2);background-color:rgba(80,60,30,0.03)}
+.goal-tbl th:nth-child(7),.goal-tbl td:nth-child(7){background-color:rgba(80,60,30,0.03)}
+.goal-tbl th:nth-child(8),.goal-tbl td:nth-child(8){background-color:rgba(80,60,30,0.03)}
+.goal-tbl th:nth-child(9),.goal-tbl td:nth-child(9){background-color:rgba(80,60,30,0.03)}
+.goal-tbl tr:last-child td{border-bottom:none}
+.mini-bar{width:52px;height:5px;background:rgba(0,0,0,0.07);border-radius:100px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:5px}
+.mini-bar-fill{height:100%;border-radius:100px}
+.mono{font-family:'Noto Sans KR',sans-serif;font-weight:500}
+
+.kpi-mini-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px 15px}
+.kpi-mini-label{font-size:10.5px;color:var(--ink3);margin-bottom:8px;font-weight:600}
+.kpi-mini-row{margin-bottom:3px}
+.kpi-mini-prev{font-size:11px;color:var(--ink3);font-family:'Noto Sans KR',sans-serif}
+.kpi-mini-divider{height:1px;background:var(--border);margin:7px 0}
+.kpi-mini-val{font-size:16px;font-weight:800;font-family:'Noto Sans KR',sans-serif}
+.kpi-mini-delta{font-size:11px;font-weight:700;margin-top:3px}
+.kpi-mini-delta.up{color:var(--done)}
+.goal-tbl{width:100%;border-collapse:collapse}
+.goal-tbl th{font-size:11.5px;font-weight:700;color:var(--ink2);background:var(--card2);padding:9px 14px;border-bottom:1px solid var(--border);white-space:nowrap;text-align:left}
+.goal-tbl td{padding:9px 14px;border-bottom:1px solid var(--border);font-size:12.5px}
+.goal-tbl tr:last-child td{border-bottom:none}
+.mini-bar{width:52px;height:5px;background:rgba(0,0,0,0.07);border-radius:100px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:5px}
+.mini-bar-fill{height:100%;border-radius:100px}
+.mono{font-family:'Noto Sans KR',sans-serif;font-weight:500}
+
+/* goal-tbl 그룹 헤더 */
+.goal-tbl .th-group {
+  text-align:center; font-size:11px; font-weight:800;
+  padding:7px 8px; border-bottom:1px solid var(--border);
+  letter-spacing:.02em;
+}
+.goal-tbl .th-group.g-rev  { background:#eef3ff; color:#1d4ed8; border-right:2px solid #bfdbfe; }
+.goal-tbl .th-group.g-cir  { background:#ecfdf5; color:#15803d; border-right:2px solid #bbf7d0; }
+.goal-tbl .th-group.g-ci   { background:#faf5ff; color:#6d28d9; }
+.goal-tbl .th-sub {
+  font-size:11px; font-weight:600; color:var(--ink2);
+  padding:6px 10px; border-bottom:1px solid var(--border);
+  white-space:nowrap; text-align:left; background:var(--card2);
+}
+.goal-tbl .th-sub.g-rev { border-right:1px solid #dbeafe; }
+.goal-tbl .th-sub.g-cir { border-right:1px solid #d1fae5; }
+.goal-tbl td.g-rev { border-right:1px solid #dbeafe; }
+.goal-tbl td.g-cir { border-right:1px solid #d1fae5; }
+.goal-tbl td:nth-child(5){border-right:2px solid #bfdbfe}
+.goal-tbl td:nth-child(8){border-right:2px solid #bbf7d0}
+
+/* ── 병목/고민 카드 ── */
+.issue-list {display:flex; flex-direction:column; gap:10px}
+.issue-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; padding:14px 18px;
+  display:flex; gap:14px; align-items:flex-start;
+  border-left:4px solid var(--ic, var(--warn));
+}
+.issue-icon {font-size:18px; flex-shrink:0; margin-top:1px}
+.issue-title {font-size:13px; font-weight:700; margin-bottom:4px}
+.issue-desc {font-size:12.5px; color:var(--ink2); line-height:1.65}
+.issue-desc strong {color:var(--ink); font-weight:600}
+.issue-tag {
+  display:inline-block; font-size:11px; font-weight:700; letter-spacing:.05em;
+  padding:1px 8px; border-radius:4px; margin-bottom:6px;
+}
+.issue-tag.block  {background:var(--blockbg); color:var(--block)}
+.issue-tag.process{background:var(--warnbg);  color:var(--warn)}
+.issue-tag.discuss{background:var(--thinkbg); color:var(--think)}
+
+.think-list {display:flex; flex-direction:column; gap:10px}
+.think-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; padding:14px 18px;
+  border-left:4px solid var(--think);
+}
+.think-q {font-size:13px; font-weight:700; margin-bottom:5px; color:var(--think)}
+.think-context {font-size:12.5px; color:var(--ink2); line-height:1.65}
+.think-context strong {color:var(--ink); font-weight:600}
+
+/* ── 액션 아이템 ── */
+.action-item {
+  display:flex; gap:8px; align-items:flex-start;
+  font-size:12.5px; line-height:1.6; margin-bottom:6px;
+  padding-bottom:6px; border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.action-item:last-child {margin-bottom:0; padding-bottom:0; border-bottom:none}
+.action-dot {
+  flex-shrink:0; width:5px; height:5px; border-radius:50%;
+  margin-top:8px;
+}
+
+/* ── 편집/저장 패널 ── */
+#ctrl-panel {
+  position:fixed; bottom:28px; right:28px; z-index:999;
+  display:flex; flex-direction:column; gap:8px; align-items:flex-end;
+}
+#edit-toggle {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 18px; border-radius:10px;
+  border:1px solid var(--border2); background:var(--card);
+  color:var(--ink2); font-family:'Noto Sans KR',sans-serif;
+  font-size:12.5px; font-weight:600; cursor:pointer;
+  box-shadow:0 2px 16px rgba(0,0,0,0.08); transition:all .18s;
+  white-space:nowrap;
+}
+#edit-toggle::before {
+  content:''; width:7px; height:7px; border-radius:50%;
+  background:var(--border2); flex-shrink:0; transition:background .18s;
+}
+#edit-toggle:hover { border-color:var(--ink3); color:var(--ink); }
+#edit-toggle.on {
+  border-color:var(--v1); color:var(--v1);
+  background:var(--v1bg); box-shadow:0 2px 16px rgba(37,99,235,0.15);
+}
+#edit-toggle.on::before { background:var(--v1); }
+#save-btn {
+  display:flex; align-items:center; gap:8px;
+  padding:10px 18px; border-radius:10px; border:none;
+  background:var(--ink); color:#fff;
+  font-family:'Noto Sans KR',sans-serif; font-size:12.5px; font-weight:600;
+  cursor:pointer; box-shadow:0 2px 16px rgba(0,0,0,0.14); transition:all .18s;
+  white-space:nowrap; letter-spacing:.01em;
+}
+#save-btn:hover { background:#2d2d2d; transform:translateY(-1px); box-shadow:0 4px 20px rgba(0,0,0,0.2); }
+#save-btn::before { content:'↓'; font-size:13px; font-weight:700; opacity:.8; }
+#save-toast {
+  position:fixed; bottom:90px; right:28px;
+  background:var(--ink); color:#fff; font-size:12px; font-weight:600;
+  padding:8px 16px; border-radius:8px; z-index:1000;
+  white-space:nowrap; display:none;
+  box-shadow:0 4px 16px rgba(0,0,0,0.18);
+}
+
+/* ── 편집 표시 ── */
+[contenteditable="true"] {
+  outline: 1.5px dashed rgba(37,99,235,0.4);
+  border-radius:3px; padding:1px 3px;
+}
+
+.g {color:var(--done); font-weight:600}
+.y {color:var(--warn); font-weight:600}
+.r {color:var(--block); font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-tag">슬룸 마케팅 1팀 퍼포먼스 · 주간보고</div>
+    <div class="hdr-title">목베개플러스 <em>V1·V2</em> 마케팅 현황</div>
+  </div>
+  <div class="hdr-right">
+    <div class="hdr-week">2026년 5월 1주차</div>
+    <div class="hdr-meta">5/1~5/7 · 기준 아임웹 ROAS<br>작성 슬룸 마케팅 1팀</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ SECTION 01 · 목표 달성 현황 ══ -->
+<div class="sec">
+  <div class="sec-hdr">
+    <span class="sec-num">01</span>
+    <span class="sec-title">제품별 목표 달성 현황</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink3);margin-bottom:18px">V1+V2 합산 총매출 기준 추이 · 공헌이익 <strong>10% 목표 유지 여부</strong> 중심 검토</p>
+
+  <!-- ① 4주 추이 차트 + 4주차 하이라이트 -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:16px">
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:3px">V1+V2 주차별 총매출 · 공헌이익 · ROAS</div>
+        <div style="font-size:11px;color:var(--ink3)">4월 3W → 5월 1W · 최근 4주 흐름</div>
+      </div>
+      <div style="background:var(--ink);border-radius:8px;padding:10px 14px;flex-shrink:0">
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.4);font-family:'Noto Sans KR',sans-serif;margin-bottom:6px;letter-spacing:.08em">5월 1W vs 4월 5W</div>
+        <div style="display:flex;gap:14px">
+          <div style="text-align:center">
+            <div style="font-size:10.5px;color:rgba(255,255,255,0.4);margin-bottom:2px">총매출</div>
+            <div style="font-size:14px;font-weight:800;color:#fca5a5;font-family:'Noto Sans KR',sans-serif">↑ +16.4%</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10.5px;color:rgba(255,255,255,0.4);margin-bottom:2px">ROAS</div>
+            <div style="font-size:14px;font-weight:800;color:#fca5a5;font-family:'Noto Sans KR',sans-serif">2.01→1.97</div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10.5px;color:rgba(255,255,255,0.4);margin-bottom:2px">공헌이익률</div>
+            <div style="font-size:14px;font-weight:800;color:#fde68a;font-family:'Noto Sans KR',sans-serif">19%→19%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas id="chartMain" height="351" style="display: block; box-sizing: border-box; height: 351px; width: 1054px;" width="1054"></canvas>
+  </div>
+
+  <!-- ② 핵심 지표 4개 카드 -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px">
+    <div class="kpi-mini-card">
+      <div class="kpi-mini-label">총매출</div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월4W 10,521만</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월2W 9,611만</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월3W 11,542만</span></div>
+      <div class="kpi-mini-divider"></div>
+      <div class="kpi-mini-val" style="color:var(--warn)">9,880만</div>
+      <div class="kpi-mini-delta" style="color:var(--warn)">↑ +16.4%</div>
+    </div>
+    <div class="kpi-mini-card">
+      <div class="kpi-mini-label">ROAS</div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월3W 2.13</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월4W 1.62</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월5W 2.01</span></div>
+      <div class="kpi-mini-divider"></div>
+      <div class="kpi-mini-val" style="color:var(--warn)">1.97</div>
+      <div class="kpi-mini-delta" style="color:var(--warn)">↓ −0.04</div>
+    </div>
+    <div class="kpi-mini-card">
+      <div class="kpi-mini-label">공헌이익률 (목표 10%)</div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev" style="color:var(--done)">4월3W 24% (+2,815만)</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev" style="color:var(--warn)">4월4W 7% (+765만)</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev" style="color:var(--done)">4월5W 19% (+1,874만)</span></div>
+      <div class="kpi-mini-divider"></div>
+      <div class="kpi-mini-val" style="color:var(--done)">19%</div>
+      <div style="font-size:11px;font-weight:700;color:var(--done);background:rgba(22,163,74,0.1);border-radius:4px;padding:2px 7px;display:inline-block;margin-top:3px">+2,226만 ✅ 유지</div>
+    </div>
+    <div class="kpi-mini-card">
+      <div class="kpi-mini-label">반품율 · 취소율</div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev" style="color:var(--warn)">4월3W 반품7% 취소7%</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev">4월4W 반품5% 취소9%</span></div>
+      <div class="kpi-mini-row"><span class="kpi-mini-prev" style="color:var(--done)">4월5W 반품2% 취소10%</span></div>
+      <div class="kpi-mini-divider"></div>
+      <div class="kpi-mini-val" style="color:var(--warn)">반품 3%</div>
+      <div class="kpi-mini-delta">취소 9% · 소폭 개선</div>
+    </div>
+  </div>
+
+  <!-- ③ 해석 -->
+  <div style="background:rgba(22,163,74,0.05);border:1px solid rgba(22,163,74,0.15);border-radius:8px;padding:12px 16px;font-size:12.5px;color:var(--ink2);line-height:1.65;margin-bottom:14px">
+    ✅ <strong>5월 1주차 핵심 변화</strong> — 총매출 +16.4%(9,880만→11,498만), ROAS 2.01→1.97 유지. CI +2,226만(19%)으로 흑자 기조 유지.
+    <span style="color:var(--done)"> V2 지속 성장(ROAS 2.52, CI률 32%, +2,605만). V1은 ROAS 1.28 · CI −379만으로 부진 지속.</span>
+  </div>
+
+  <!-- ④ 목표 달성 상세 현황 테이블 -->
+  <div style="display:flex;flex-direction:column;gap:12px">
+
+    <!-- V1 -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+      <div style="padding:11px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--v1bg)">
+        <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--v1);color:#fff;font-family:'Noto Sans KR',sans-serif">V1</span>
+        <span style="font-size:13px;font-weight:700">목베개플러스</span>
+        <span style="font-size:11px;color:var(--ink3);margin-left:auto">월목표 4.05억 · CI목표 10%</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="goal-tbl">
+          <colgroup>
+            <col style="width:88px">
+            <col style="width:96px"><col style="width:100px"><col style="width:72px"><col style="width:104px">
+            <col style="width:84px"><col style="width:84px"><col style="width:108px">
+            <col style="width:88px"><col style="width:96px">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="th-sub" rowspan="2" style="vertical-align:middle;text-align:center;border-right:2px solid var(--border2)">주차</th>
+              <th class="th-group g-rev" colspan="4">매출</th>
+              <th class="th-group g-cir" colspan="3">공헌이익률</th>
+              <th class="th-group g-ci" colspan="2">공헌이익</th>
+            </tr>
+            <tr>
+              <th class="th-sub g-rev">목표 매출</th><th class="th-sub g-rev">달성 매출</th><th class="th-sub g-rev">달성률</th>
+              <th class="th-sub g-rev" style="border-right:2px solid #bfdbfe">예상 달성률</th>
+              <th class="th-sub g-cir">목표 CI률</th><th class="th-sub g-cir">달성 CI률</th>
+              <th class="th-sub g-cir" style="border-right:2px solid #bbf7d0">예상 CI달성률</th>
+              <th class="th-sub g-ci">목표 CI</th><th class="th-sub g-ci">달성 CI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--ink3)">4월 3W<br><span style="font-size:10.5px">4/13~4/19</span></td>
+              <td style="color:var(--ink3)">8,100만</td><td>7,899만</td><td class="y">98%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g">24% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">810만</td><td class="g">+1,885만</td>
+            </tr>
+            <tr>
+              <td style="color:var(--ink3)">4월 4W<br><span style="font-size:10.5px">4/20~4/26</span></td>
+              <td style="color:var(--ink3)">8,100만</td><td>5,327만</td>
+              <td class="r">66%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="r">0%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">810만</td><td class="r">−23만</td>
+            </tr>
+            <tr>
+              <td style="color:var(--ink3)">4월 5W<br><span style="font-size:10.5px">4/27~4/30</span></td>
+              <td style="color:var(--ink3)">8,100만</td><td>3,390만</td>
+              <td class="r">42%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="r">−5%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">810만</td><td class="r">−169만</td>
+            </tr>
+            <tr style="background:var(--v1bg)">
+              <td style="font-weight:600"><strong>5월 1W ★</strong><br><span style="font-size:10.5px;font-weight:400">5/1~5/7</span></td>
+              <td style="color:var(--ink3)">3,750만</td><td style="font-weight:600"><strong>3,264만</strong></td>
+              <td class="r" style="font-weight:600"><strong>87%</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="r" style="font-weight:600"><strong>−12%</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">375만</td><td class="r" style="font-weight:600"><strong>−379만</strong></td>
+            </tr>
+            <tr style="background:rgba(37,99,235,0.04);border-top:1.5px dashed rgba(37,99,235,0.2)">
+              <td style="font-weight:600;color:var(--v1)"><strong>누적<br><span style="font-size:10px;font-weight:400">4월~5월1W</span></strong></td>
+              <td style="color:var(--ink3)">—</td>
+              <td style="font-weight:600"><strong>3.51억</strong></td><td class="r" style="font-weight:600"><strong>—</strong></td>
+              <td style="font-weight:600;color:var(--block)"><strong>—</strong></td>
+              <td style="color:var(--ink3)">10%</td><td class="r" style="font-weight:600"><strong>5%</strong></td>
+              <td style="font-weight:600;color:var(--warn)"><strong>~50%</strong></td>
+              <td style="color:var(--ink3)">—</td><td style="font-weight:600"><strong>1,800만</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- V2 -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+      <div style="padding:11px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--v2bg)">
+        <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--v2);color:#fff;font-family:'Noto Sans KR',sans-serif">V2</span>
+        <span style="font-size:13px;font-weight:700">목마사지베개</span>
+        <span style="font-size:11px;color:var(--ink3);margin-left:auto">월목표 1.35억 · CI목표 10%</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="goal-tbl">
+          <colgroup>
+            <col style="width:88px">
+            <col style="width:96px"><col style="width:100px"><col style="width:72px"><col style="width:104px">
+            <col style="width:84px"><col style="width:84px"><col style="width:108px">
+            <col style="width:88px"><col style="width:96px">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="th-sub" rowspan="2" style="vertical-align:middle;text-align:center;border-right:2px solid var(--border2)">주차</th>
+              <th class="th-group g-rev" colspan="4">매출</th>
+              <th class="th-group g-cir" colspan="3">공헌이익률</th>
+              <th class="th-group g-ci" colspan="2">공헌이익</th>
+            </tr>
+            <tr>
+              <th class="th-sub g-rev">목표 매출</th><th class="th-sub g-rev">달성 매출</th><th class="th-sub g-rev">달성률</th>
+              <th class="th-sub g-rev" style="border-right:2px solid #bfdbfe">예상 달성률</th>
+              <th class="th-sub g-cir">목표 CI률</th><th class="th-sub g-cir">달성 CI률</th>
+              <th class="th-sub g-cir" style="border-right:2px solid #bbf7d0">예상 CI달성률</th>
+              <th class="th-sub g-ci">목표 CI</th><th class="th-sub g-ci">달성 CI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:var(--ink3)">4월 3W<br><span style="font-size:10.5px">4/13~4/19</span></td>
+              <td style="color:var(--ink3)">2,700만</td><td>3,643만</td><td class="g">135% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g">26% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">270만</td><td class="g">+930만</td>
+            </tr>
+            <tr>
+              <td style="color:var(--ink3)">4월 4W<br><span style="font-size:10.5px">4/20~4/26</span></td>
+              <td style="color:var(--ink3)">2,700만</td><td>5,193만</td>
+              <td class="g">192% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g">15% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">270만</td><td class="g">+789만</td>
+            </tr>
+            <tr>
+              <td style="color:var(--ink3)">4월 5W<br><span style="font-size:10.5px">4/27~4/30</span></td>
+              <td style="color:var(--ink3)">2,700만</td><td>6,490만</td>
+              <td class="g">240% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g">31% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">270만</td><td class="g">+2,042만</td>
+            </tr>
+            <tr style="background:var(--v2bg)">
+              <td style="font-weight:600"><strong>5월 1W ★</strong><br><span style="font-size:10.5px;font-weight:400">5/1~5/7</span></td>
+              <td style="color:var(--ink3)">11,250만</td><td style="font-weight:600"><strong>8,234만</strong></td>
+              <td class="y" style="font-weight:600"><strong>73%</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g" style="font-weight:600"><strong>32% ✅</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">1,125만</td><td class="g" style="font-weight:600"><strong>+2,605만</strong></td>
+            </tr>
+            <tr style="background:rgba(22,163,74,0.04);border-top:1.5px dashed rgba(22,163,74,0.2)">
+              <td style="font-weight:600;color:var(--v2)"><strong>누적<br><span style="font-size:10px;font-weight:400">4월~5월1W</span></strong></td>
+              <td style="color:var(--ink3)">—</td>
+              <td style="font-weight:600"><strong>2.51억</strong></td><td class="g" style="font-weight:600"><strong>—</strong></td>
+              <td style="font-weight:600;color:var(--done)"><strong>—</strong></td>
+              <td style="color:var(--ink3)">10%</td><td class="g" style="font-weight:600"><strong>27%</strong></td>
+              <td style="font-weight:600;color:var(--done)"><strong>~270%</strong></td>
+              <td style="color:var(--ink3)">—</td><td style="font-weight:600"><strong>+6,800만</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TTL -->
+    <div style="background:var(--card);border:2px solid var(--ink);border-radius:12px;overflow:hidden">
+      <div style="padding:11px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--ink)">
+        <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:rgba(255,255,255,0.15);color:#fff;font-family:'Noto Sans KR',sans-serif">TTL</span>
+        <span style="font-size:13px;font-weight:700;color:#fff">V1 + V2 합산</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.5);margin-left:auto">월목표 5.40억 · CI목표 10%</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="goal-tbl">
+          <colgroup>
+            <col style="width:88px">
+            <col style="width:96px"><col style="width:100px"><col style="width:72px"><col style="width:104px">
+            <col style="width:84px"><col style="width:84px"><col style="width:108px">
+            <col style="width:88px"><col style="width:96px">
+          </colgroup>
+          <thead>
+            <tr>
+              <th class="th-sub" rowspan="2" style="vertical-align:middle;text-align:center;border-right:2px solid var(--border2)">주차</th>
+              <th class="th-group g-rev" colspan="4">매출</th>
+              <th class="th-group g-cir" colspan="3">공헌이익률</th>
+              <th class="th-group g-ci" colspan="2">공헌이익</th>
+            </tr>
+            <tr>
+              <th class="th-sub g-rev">목표 매출</th><th class="th-sub g-rev">달성 매출</th><th class="th-sub g-rev">달성률</th>
+              <th class="th-sub g-rev" style="border-right:2px solid #bfdbfe">예상 달성률</th>
+              <th class="th-sub g-cir">목표 CI률</th><th class="th-sub g-cir">달성 CI률</th>
+              <th class="th-sub g-cir" style="border-right:2px solid #bbf7d0">예상 CI달성률</th>
+              <th class="th-sub g-ci">목표 CI</th><th class="th-sub g-ci">달성 CI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:rgba(30,26,18,0.05)">
+              <td style="font-weight:600">4월 3W</td>
+              <td style="color:var(--ink3)">1.08억</td><td style="font-weight:700">11,542만</td>
+              <td class="g" style="font-weight:600"><strong>107% ✅</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g" style="font-weight:700">24% ✅</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">1,080만</td><td class="g" style="font-weight:700">+2,815만</td>
+            </tr>
+            <tr style="background:rgba(30,26,18,0.05)">
+              <td style="font-weight:600">4월 4W</td>
+              <td style="color:var(--ink3)">1.08억</td><td>10,521만</td>
+              <td class="y">97%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="y">7%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">1,080만</td><td class="y">+765만</td>
+            </tr>
+            <tr>
+              <td style="color:var(--ink3)">4월 5W<br><span style="font-size:10.5px">4/27~4/30</span></td>
+              <td style="color:var(--ink3)">1.08억</td><td>9,880만</td>
+              <td class="y">91%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g">19%</td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">1,080만</td><td class="g">+1,874만</td>
+            </tr>
+            <tr style="background:rgba(30,26,18,0.07)">
+              <td style="font-weight:600"><strong>5월 1W ★</strong><br><span style="font-size:10.5px;font-weight:400">5/1~5/7</span></td>
+              <td style="color:var(--ink3)">1.50억</td><td style="font-weight:700"><strong>11,498만</strong></td>
+              <td class="y" style="font-weight:600"><strong>77%</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">10%</td><td class="g" style="font-weight:700"><strong>19%</strong></td><td style="color:var(--ink3)">—</td>
+              <td style="color:var(--ink3)">1,500만</td><td class="g" style="font-weight:700"><strong>+2,226만</strong></td>
+            </tr>
+            <tr style="background:rgba(30,26,18,0.04);border-top:1.5px dashed var(--border2)">
+              <td style="font-weight:600;color:var(--ink)"><strong>누적<br><span style="font-size:10px;font-weight:400">4월~5월1W</span></strong></td>
+              <td style="color:var(--ink3)">—</td>
+              <td style="font-weight:700"><strong>6.05억</strong></td><td class="g" style="font-weight:600"><strong>—</strong></td>
+              <td style="font-weight:600;color:var(--done)"><strong>—</strong></td>
+              <td style="color:var(--ink3)">10%</td><td class="g" style="font-weight:600"><strong>14%</strong></td>
+              <td style="font-weight:600;color:var(--done)"><strong>~140%</strong></td>
+              <td style="color:var(--ink3)">—</td>
+              <td style="font-weight:700"><strong>8,500만</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="padding:10px 16px;background:var(--card2);border:1px solid var(--border);border-radius:8px;font-size:11px;color:var(--ink3);line-height:1.7">
+      📌 <strong>예상 달성률</strong> = 일평균 달성 매출 × 주차 합산 일수(35일) / 월 목표 · 경과 기준 28일(4W×7일) &nbsp;·&nbsp;
+      <strong>예상 CI달성률</strong> = 달성 CI률 / 목표 CI률(10%)
+    </div>
+
+    <!-- 5월 방향 -->
+    <div style="background:var(--ink);border-radius:10px;padding:18px 22px;margin-top:4px">
+      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:.08em;margin-bottom:12px">5월 운영 방향</div>
+      <div style="display:flex;align-items:flex-start;gap:12px;font-size:12.5px;color:rgba(255,255,255,0.75);line-height:1.8">
+        <span style="flex-shrink:0;font-size:10px;font-weight:800;padding:2px 8px;border-radius:4px;background:rgba(22,163,74,0.3);color:#86efac;margin-top:3px;white-space:nowrap">5월 방향</span>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div>5월 목표 매출 및 공헌이익 고려해 <strong style="color:#86efac">V2 위주로 효율 광고비 점진적 운영</strong> 진행 중</div>
+          <div>→ V2 메타 <strong style="color:#fff">30%</strong> · 구글애즈 <strong style="color:#fff">23%</strong> 광고비 증액</div>
+          <div>→ 금주 <strong style="color:#fde68a">저비용 소재 위주 신규 캠페인 활성화</strong>하며 추가 광고 예산 투입 예정</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-hdr">
+    <span class="sec-num">02</span>
+    <span class="sec-title">제품별 마케팅 액션 현황</span>
+  </div>
+
+  <!-- ── 5월 방향성: V2 집중 ── -->
+  <div style="background:var(--card);border:1px solid var(--border);border-top:3px solid var(--v2);border-radius:10px;overflow:hidden;margin-bottom:14px">
+    <div style="padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;background:var(--v2bg)">
+      <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--v2);color:#fff;font-family:'Noto Sans KR',sans-serif">5월 방향성</span>
+      <span style="font-size:13px;font-weight:700">V2 리소스 집중 · V1+V2 TTL 매출/CI 달성</span>
+      <span style="margin-left:auto;font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:4px;background:rgba(22,163,74,0.1);color:var(--v2)">매출 확장 + 신규 니즈</span>
+    </div>
+    <div style="padding:14px 18px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:10.5px;font-weight:700;color:var(--ink3)">메인 축</div>
+        <div style="font-size:12.5px;color:var(--ink2)"><strong style="color:var(--v2)">목디스크 기반</strong> + 확장 키워드 지속 테스트</div>
+        <div style="font-size:10.5px;font-weight:700;color:var(--ink3);margin-top:4px">확장 방식</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          <span style="font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;background:rgba(22,163,74,0.1);color:var(--v2)">수면장애 ✅</span>
+          <span style="font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;background:rgba(22,163,74,0.1);color:var(--v2)">완판 ✅</span>
+          <span style="font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;background:rgba(217,119,6,0.1);color:var(--warn)">버섯목</span>
+          <span style="font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;background:rgba(217,119,6,0.1);color:var(--warn)">자세교정</span>
+          <span style="font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;background:rgba(217,119,6,0.1);color:var(--warn)">코골이(V1,V2)</span>
+        </div>
+        <div style="font-size:10.5px;color:var(--ink3);margin-top:2px">*코골이 소스 확보 V1으로 → V1으로 확장</div>
+      </div>
+      <div style="background:var(--card2);border-radius:8px;padding:11px 14px">
+        <div style="font-size:10.5px;font-weight:700;color:var(--ink3);margin-bottom:6px">V2 확장 논리</div>
+        <div style="font-size:11.5px;color:var(--ink2);line-height:1.7">
+          "목디스크/통증으로 잠 못 자는 사람" → <strong style="color:var(--v2)">수면장애 / 코골이</strong>로 확장<br>
+          "목디스크 원인이 자세" → <strong style="color:var(--v2)">버섯목 / 자세교정</strong>으로 확장<br>
+          V2만의 포인트 → <strong style="color:var(--v2)">완판</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── V1 목베개플러스 ── -->
+  <div class="product-block" style="margin-bottom:20px">
+    <div class="product-block-hdr">
+      <span class="goal-product-tag tag-v1">V1</span>
+      <span style="font-size:14px;font-weight:700">목베개플러스 — 진행 중인 액션</span>
+    </div>
+    <div class="product-block-body">
+
+      <div class="act-tab-bar" id="v1-tab-bar">
+        <button class="act-tab-btn active" onclick="switchActTab('v1','sleep',this)">01 수면장애</button>
+        <button class="act-tab-btn" onclick="switchActTab('v1','neck',this)">02 뒷목통증+두통</button>
+        <button class="act-tab-btn" onclick="switchActTab('v1','teen',this)">03 청소년 <span style="font-size:10px;font-weight:400;color:var(--ink3)">변동X</span></button>
+      </div>
+
+      <!-- 01 뒷목통증+두통 -->
+      <div class="act-tab-panel" id="v1-neck">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">대표캠페인</span><span class="act-camp-val">META_목베개플러스_전지면_ASC_전환_논타겟팅_250715 (신규 전환) · 260401 구 캠페인 OFF</span></div>
+          <div class="act-camp-row"><span class="act-camp-label">대표소재</span><span class="act-camp-val">260422_목베개플러스_최현진_RVI_뒷목통증두통_경추성두통</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 액션 목표</div>
+            <div class="action-col-body">목디스크와 연결된 뒷목통증 소구 지속 메인 활용. 신규 캠페인 전환 후 고효율 소재 위주 재정비</div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title result" style="margin-bottom:6px">📊 5월 1주차 액션 결과</div>
+            <div class="action-col-body">
+              <span class="result-tag bad">기존 고효율 소재 V1_B 전환당 비용 상승</span> 전체 캠페인 효율 감소 추이 확인<br>
+              <span class="result-tag mid">4/22부로 기존 캠페인 OFF</span> 신규 ASC 캠페인으로 전환, 신규 소재 + PA 소재 운영 진행<br>
+              <div style="background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.15);border-radius:8px;padding:10px 14px;margin-top:10px">
+                <div style="font-size:11px;font-weight:700;color:var(--v1);margin-bottom:8px;letter-spacing:.03em">🎬 소재 인사이트 · 260422_최현진_RVI_뒷목통증두통_경추성두통</div>
+                <div class="action-item"><div class="action-dot" style="background:var(--v1)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">단순 통증을 넘어 <strong>'경추성 두통'</strong>이라는 구체적인 병명과 3D 그래픽을 통해 통증 원인을 설명 → 신뢰·설득 구조 연결</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--v1)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">앞단에 <strong>'30일 무료체험'</strong> CTA 배치 → 구매 고민 제거</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 5월 1주차 집행 전략</div>
+            <div class="action-col-body">
+              <strong>기존 고효율 소재 위주 운영 & 모니터링</strong><br><br>
+              신규 리소스는 V2 집중 — V1은 PA장애림 등 검증된 소재 안정 운용 지속
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 수면장애 -->
+      <div class="act-tab-panel active" id="v1-sleep">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">대표캠페인</span><span class="act-camp-val">META_목베개플러스_전지면_ASC_전환_논타겟팅_250715</span></div>
+          <div class="act-camp-row"><span class="act-camp-label">5월 방향</span><span class="act-camp-val">수면장애 소구 유지 · 코골이 연결 확장 모니터링</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 5월 1주차 운영</div>
+            <div class="action-col-body">ASC 캠페인 안정 운용 지속. 수면장애 소구 기반 유지하며 코골이 연결 반응 확인 중</div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title result" style="margin-bottom:6px;color:var(--think)">🆕 신규 반응 콘텐츠 확인 — 수면장애 → 코골이</div>
+            <div class="action-col-body">
+              <div style="background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.18);border-radius:8px;padding:10px 14px;margin-bottom:10px">
+                <div style="font-size:11px;font-weight:700;color:var(--think);margin-bottom:8px">🎬 260423_김승희_VI_목디스크_부부홈캠B</div>
+                <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">수면장애→코골이 연결 반응 확인 중 — 초기 데이터 수집 단계</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+                  <div style="font-size:12px;color:var(--ink2)"><strong>모델 / PIP 효과 / 장면 연출</strong> 실제 상황 공감력 있게 구성한 점 워킹</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+                  <div style="font-size:12px;color:var(--ink2)"><strong>원인 → 해결 빠른 전개</strong>로 이탈 방지 — 코골이 확장 유효성 검증 진행</div>
+                </div>
+              </div>
+              <a href="https://www.notion.so/5-2-_-35dd64378d4880089625cde320b20a06" target="_blank"
+                 style="display:inline-flex;align-items:center;gap:6px;padding:7px 11px;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.18);border-radius:7px;text-decoration:none;font-size:11.5px;color:var(--v1)"
+                 onmouseover="this.style.background='rgba(37,99,235,0.11)'" onmouseout="this.style.background='rgba(37,99,235,0.06)'">
+                <span style="font-size:12px">📎</span>
+                <span style="font-weight:600">콘텐츠 확인 &amp; 인사이트 보기</span>
+                <span style="opacity:.6">↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 후속 진행</div>
+            <div class="action-col-body">
+              <strong>코골이 소재(부부홈캠B) 반응 확인 중</strong><br>
+              김승희 홈캠 소재 초기 데이터 수집 중 — 수면장애→코골이 확장 유효성 검증 진행<br><br>
+              <strong>ASC 캠페인 V1 ROAS 1.28 유지</strong><br>
+              기존 고효율 소재 중심 안정 운용
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 청소년 -->
+      <div class="act-tab-panel" id="v1-teen">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">현재 상태</span><span class="act-camp-val">상세페이지 청소년 랜딩 적용 완료 후 소재 투입 예정 — 5월 2주차 이후</span></div>
+          <div class="act-camp-row"><span class="act-camp-label">D2C 상세페이지</span><span class="act-camp-val" style="color:var(--v1);font-weight:600">예정 5/26 🗓️</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 액션 목표</div>
+            <div class="action-col-body">5월 초 재게 준비. 상세페이지 청소년 페르소나 요소 추가 + 소재 개선을 세트로 진행</div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title result" style="margin-bottom:6px">📊 4월 3주차 결과</div>
+            <div class="action-col-body">
+              <span class="result-tag mid">ROAS 0.82 · 효율 하락</span> 재방문율 29%→22% 하락과 동시에 ROAS 1.79→0.82 저하<br>
+              재방문율 하락 = 신규 모수 유입 증가 → 상세페이지 청소년 소구 요소 부재로 랜딩 전환율 저하 확인
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 재게 조건</div>
+            <div class="action-col-body">
+              <strong>① 상세페이지 개선 (5월 초 예정)</strong><br>
+              청소년 페르소나 요소 추가 → 신규 모수 랜딩 후 전환율 개선<br><br>
+              <strong>② 소재 개선 후 동시 배포</strong><br>
+              두 가지 개선 완료 후 5월 초 재게 예정<br><br>
+              <div style="background:rgba(217,119,6,0.06);border:1px solid rgba(217,119,6,0.18);border-radius:6px;padding:8px 11px;font-size:11.5px;color:var(--ink2)">
+                📌 <strong>바이럴 상세 소스 확보</strong> — 금주 예정 확인
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- V1 다음 주 시도할 액션 -->
+      <div style="background:rgba(37,99,235,0.04);border:1px solid rgba(37,99,235,0.15);border-radius:10px;padding:14px 18px;margin-top:12px">
+        <div style="font-size:11.5px;font-weight:700;color:var(--v1);margin-bottom:8px">🎯 V1 5월 1주차 액션 방향</div>
+        <div class="action-item" style="margin-bottom:0"><div class="action-dot" style="background:var(--v1)"></div>
+          <div style="font-size:12.5px;color:var(--ink2)"><strong>기존 고효율 소재 위주 운영 &amp; 모니터링</strong><br>
+            <span style="font-size:12px;color:var(--ink3)">신규 리소스는 V2 집중 — V1은 현행 고효율 소재(PA장애림·부목활용B 등) 안정 운용</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── V2 목마사지베개 ── -->
+  <div class="product-block">
+    <div class="product-block-hdr">
+      <span class="goal-product-tag tag-v2">V2</span>
+      <span style="font-size:14px;font-weight:700">목마사지베개 V2 — 진행 중인 액션</span>
+    </div>
+    <div class="product-block-body">
+
+      <div class="act-tab-bar" id="v2-tab-bar" style="margin-top:14px">
+        <button class="act-tab-btn active" onclick="switchActTab('v2','sleep',this)">01 수면장애</button>
+        <button class="act-tab-btn" onclick="switchActTab('v2','turtle',this)">02 목디스크 · 거북목</button>
+        <button class="act-tab-btn" onclick="switchActTab('v2','wanpan',this)">03 [완판]</button>
+        <button class="act-tab-btn" onclick="switchActTab('v2','pa',this)">04 메타 PA</button>
+      </div>
+
+      <!-- 01 수면장애 -->
+      <div class="act-tab-panel active" id="v2-sleep">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">대표소재</span><span class="act-camp-val">260424_목마사지베개V2_김희진_VI_수면장애_리빙인플(여자)B — ROAS 1.65 고효율 확인</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 고효율 소재 인사이트</div>
+            <div class="action-col-body">
+              <div style="background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.15);border-radius:8px;padding:10px 14px">
+                <div style="font-size:11px;font-weight:700;color:var(--done);margin-bottom:8px">🎬 260424_김희진_VI_수면장애_리빙인플(여자)B</div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)"><strong>램수면 37% 개선</strong> 문구와 구체적 임상 데이터로 기능적 신뢰도 구축</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">경추가 눌릴 때 기도가 좁아지는 원리를 3D 그래픽으로 시각화 → 코골이·수면 무호흡 상관관계 설명으로 구매 당위성 제공</div>
+                </div>
+                <div style="margin-top:8px;font-size:12px;font-weight:700;color:var(--done)">광고비 426만 / 매출 652만 / ROAS 1.65 ✅</div>
+              </div>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title result" style="margin-bottom:6px">📊 후속 액션</div>
+            <div class="action-col-body">
+              <span class="result-tag good">리빙 소재 지속 활용 ✅</span> 리빙인플(여자)B 5월1주차도 안정 운용<br><br>
+              <span class="result-tag good">2팀 신규 촬영 완료(5/8)</span> 5월 2주차 소스 투입 준비 완료<br><br>
+              <span class="result-tag mid">PA 수면장애 크리에이터 리스팅 진행 중</span>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 5월 확장 계획</div>
+            <div class="action-col-body">
+              <strong>5월 2주차 소재 투입 예정</strong><br>
+              5/8 촬영 완료 소스 기반 수면장애 신규 소재 라이브 예정<br><br>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 목디스크 · 거북목 -->
+      <div class="act-tab-panel" id="v2-turtle">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">소구 방향</span><span class="act-camp-val">목디스크/거북목 원인 → V2 해결 구조 · 일자별 변화(B&amp;A) 활용</span></div>
+          <div class="act-camp-row"><span class="act-camp-label">핵심 전략</span><span class="act-camp-val">베개를 매일 사용하는 특성 활용 — n일차 자세·거북목 실제 변화 B&amp;A 포맷</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 소재 방향 · Todo</div>
+            <div class="action-col-body">
+              <strong>n일차 변화 B&A 포맷 활용</strong><br>
+              베개는 매일 사용하는 제품 → 일자 경과에 따른 자세·거북목의 <strong>실제 변화가 시각적으로 드러나는 B&A n일차 구성</strong>으로 설득력 극대화<br><br>
+              <div style="background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.15);border-radius:7px;padding:9px 12px;font-size:11.5px;line-height:1.7">
+                <div class="action-item" style="margin-bottom:3px"><div class="action-dot" style="background:var(--done)"></div>
+                  <div>1일차 → 7일차 → 30일차 목 각도/자세 변화 시각화</div>
+                </div>
+                <div class="action-item" style="margin-bottom:0"><div class="action-dot" style="background:var(--done)"></div>
+                  <div>거북목(전방두부자세) → 정상 경추 커브 회복 과정 연출</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 5월 2주차 확장</div>
+            <div class="action-col-body">
+              <strong>목디스크 기반 거북목·자세교정 소구 확장</strong><br>
+              "목디스크 원인이 자세" → 버섯목·거북목 소구로 연결, 신규 B&A 영상 소재 기획<br><br>
+              <strong>이미지 캠페인 고효율 유지</strong><br>
+              메타/GFA 이미지 안정적 성과 → 영상 캠페인 보완 구조 유지
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 [완판] -->
+      <div class="act-tab-panel" id="v2-wanpan">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">디벨롭 포인트</span><span class="act-camp-val">기존 고효율 요소였던 홈쇼핑 + 3분 완판 + 전문의를 활용하여 대세감 위주의 소재 제작 예정</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 액션 목표</div>
+            <div class="action-col-body">홈쇼핑 완판 소스 기반 대세감·신뢰도 소구 지속. 신규 홈쇼핑 촬영 건 라이브 진행 예정</div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title result" style="margin-bottom:6px">📊 고효율 소재 인사이트</div>
+            <div class="action-col-body">
+              <div style="background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.15);border-radius:8px;padding:10px 14px">
+                <div style="font-size:11px;font-weight:700;color:var(--done);margin-bottom:8px">🎬 3분완판_라방 · 260416_김희진_VI_3분완판_라방</div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">실제 라이브 방송 화면과 쇼호스트 멘트, 네이버 쇼핑라이브 1위 등을 적극 노출 → <strong>검증되고 인기있는 제품</strong>이라는 인식 부여</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">실제 쇼호스트가 단순 통증이 아닌 <strong>구체적인 증상을 질문</strong>으로 던져 반응 유도</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)"><strong>잔여 수량을 지속 노출</strong> → 시청자 이탈 방지 및 긴급성 시각적 압박</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 5월 1주차 계획</div>
+            <div class="action-col-body">
+              <strong>홈쇼핑 신규 촬영 건 라이브 진행</strong><br>
+              기존 고효율 요소(홈쇼핑 + 3분 완판 + 전문의)를 활용한 대세감 위주 신규 소재 제작 예정<br><br>
+              <strong>완판 소재 지속 활용</strong><br>
+              기존 라방 소재 계속 운용 병행
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 메타 PA -->
+      <div class="act-tab-panel" id="v2-pa">
+        <div class="act-camp-info">
+          <div class="act-camp-row"><span class="act-camp-label">기반 자산</span><span class="act-camp-val">장애림 PA 소재 고효율 구조 (소구 로직 이행률 + 발화력) → V2 적용 · PA 장애림 V1 누적 ROAS ~1.87</span></div>
+        </div>
+        <div class="action-3col">
+          <div class="action-col">
+            <div class="action-col-title goal">🎯 Phase 1. 초기 PA 검증 운영안</div>
+            <div class="action-col-body">
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <div>
+                  <div style="font-size:10.5px;font-weight:700;color:var(--ink3);margin-bottom:3px">목표</div>
+                  <div style="font-size:12px;color:var(--ink2);line-height:1.6">
+                    · 초기 PA 검증 케이스 확보<br>
+                    · PA 및 내부 콘텐츠에서 반응 좋은 소구점 기반 확장
+                  </div>
+                </div>
+                <div style="border-top:1px dashed var(--border);padding-top:7px">
+                  <div style="font-size:10.5px;font-weight:700;color:var(--ink3);margin-bottom:3px">기간 · 수량</div>
+                  <div style="font-size:12px;color:var(--ink2);line-height:1.6">
+                    26.05 ~ 26.06 · 총 min <strong>14건</strong><br>
+                    <span style="font-size:11.5px;color:var(--ink3)">뒷목통증 7건 / 수면장애 7건</span>
+                  </div>
+                </div>
+                <div style="border-top:1px dashed var(--border);padding-top:7px">
+                  <div style="font-size:10.5px;font-weight:700;color:var(--ink3);margin-bottom:3px">리스트업 기준</div>
+                  <div style="font-size:12px;color:var(--ink2);line-height:1.65">
+                    · <strong>제품 상황 적합성</strong> — 검색 키워드 기반, 실제 사용 상황과 자연스럽게 연결 가능한 인원 우선<br>
+                    · <strong>콘텐츠 발화력</strong> — 기존 광고/협업 콘텐츠 경험, 전환형 제작 가능, 사용 컷 충분히 촬영 가능
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title result" style="margin-bottom:6px">📌 에이든팍 PA 진행</div>
+            <div class="action-col-body">
+              <div style="background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.2);border-radius:8px;padding:10px 14px;margin-bottom:10px">
+                <div style="font-size:11px;font-weight:700;color:var(--done);margin-bottom:6px">에이든팍 — PA 목적 진행 픽스</div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">진행비: 릴스 1건 + 2차 1개월 = <strong>450만원</strong> (VAT 제외)</div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">라이브 예정: <strong>5/25</strong></div>
+                </div>
+                <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                  <div style="font-size:12px;color:var(--ink2)">메인 소구: <strong>수면장애</strong></div>
+                </div>
+              </div>
+              <a href="https://docs.google.com/spreadsheets/d/17E-mDT27KMebx2nPBEWROrkIY3-l8OndzOMxBD55NUE/edit?gid=181602304#gid=181602304" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:var(--card2);border:1px solid var(--border);border-radius:7px;text-decoration:none;font-size:12px;color:var(--ink2);width:100%;">
+                <span style="font-size:13px">📋</span>
+                <span style="font-weight:700;color:var(--ink)">실행 프로세스 시트</span>
+                <span style="margin-left:auto;color:var(--ink3)">↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="action-col">
+            <div class="action-col-title develop">🔧 V2 PA 크리에이터 리스팅 방향</div>
+            <div class="action-col-body">
+              <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                <div style="font-size:12px;color:var(--ink2)">V1 PA 검증 구조 기반 — 소구 로직 이행률 + 발화력 동시 만족 크리에이터 집중 리스팅</div>
+              </div>
+              <div class="action-item"><div class="action-dot" style="background:var(--done)"></div>
+                <div style="font-size:12px;color:var(--ink2)">V2 USP(수면제베개 프레임, 완판 대세감)를 자연스럽게 녹인 UGC 방향 기획</div>
+              </div>
+              <div class="action-item"><div class="action-dot" style="background:var(--warn)"></div>
+                <div style="font-size:12px;color:var(--ink2)">5월 4주차~6월 릴리즈 준비 — 기존 고효율 수면장애/뒷목통증 소구 확장</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- V2 다음 주 시도할 액션 -->
+      <div style="background:rgba(22,163,74,0.05);border:1px solid rgba(22,163,74,0.2);border-radius:10px;padding:16px 18px;margin-top:12px">
+        <div style="font-size:11.5px;font-weight:700;color:var(--done);margin-bottom:14px">🎯 V2 5월 1주차 액션 방향</div>
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden">
+          <div style="background:var(--card2);padding:9px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px">
+            <span style="font-size:14px">🗓️</span>
+            <span style="font-size:12.5px;font-weight:700;color:var(--ink)">5월 1주차 V2 핵심 운용 방향</span>
+          </div>
+          <div style="padding:14px 16px;display:flex;flex-direction:column;gap:14px">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+                <span style="background:rgba(22,163,74,0.12);color:var(--done);font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px">①</span>
+                <span style="font-size:12px;font-weight:700;color:var(--ink)">목표 매출 및 공헌이익 기반 퍼포먼스 운영</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink2);line-height:1.65;padding-left:4px">
+                전체 예산 약 <strong>30% 증가</strong> 집행
+              </div>
+            </div>
+            <div style="border-top:1px dashed var(--border2)"></div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+                <span style="background:rgba(22,163,74,0.12);color:var(--done);font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px">②</span>
+                <span style="font-size:12px;font-weight:700;color:var(--ink)">콘텐츠 확장</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink2);line-height:1.75;padding-left:4px">
+                기존 고효율 소구점 유지 &amp; 표현(포맷 등) 다양화<br>
+                신규 효율점 진행 예정<br>
+                홈쇼핑 / 완판 / PA 소스 활용 소재 지속 운용
+              </div>
+            </div>
+            <div style="border-top:1px dashed var(--border2)"></div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+                <span style="background:rgba(99,102,241,0.12);color:var(--think);font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px">③</span>
+                <span style="font-size:12px;font-weight:700;color:var(--ink)">PA 5월 4주차~6월 릴리즈 준비</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink2);line-height:1.65;padding-left:4px">
+                기존 고효율 수면장애 / 뒷목통증 소구 확장 — 에이든팍 5/25 라이브 예정
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- ── 목편한케어플라잉 ── -->
+  <div class="product-block" style="margin-top:14px">
+    <div class="product-block-hdr">
+      <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--ink);color:#fff;font-family:'Noto Sans KR',sans-serif">플라잉</span>
+      <span style="font-size:14px;font-weight:700">목편한케어플라잉 — 5월 1주차 운영 현황</span>
+    </div>
+    <div class="product-block-body">
+      <!-- 5월 1주차 성과 요약 -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center">
+          <div style="font-size:10.5px;color:var(--ink3);margin-bottom:4px">총매출</div>
+          <div style="font-size:15px;font-weight:800;color:var(--warn)">283만</div>
+          <div style="font-size:10.5px;color:var(--ink3);margin-top:2px">전주 293만</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center">
+          <div style="font-size:10.5px;color:var(--ink3);margin-bottom:4px">ROAS</div>
+          <div style="font-size:15px;font-weight:800;color:var(--warn)">2.14</div>
+          <div style="font-size:10.5px;color:var(--ink3);margin-top:2px">전주 2.20</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center">
+          <div style="font-size:10.5px;color:var(--ink3);margin-bottom:4px">공헌이익</div>
+          <div style="font-size:15px;font-weight:800;color:var(--done)">+19만</div>
+          <div style="font-size:10.5px;color:var(--ink3);margin-top:2px">CI율 7%</div>
+        </div>
+        <div style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;text-align:center">
+          <div style="font-size:10.5px;color:var(--ink3);margin-bottom:4px">광고비</div>
+          <div style="font-size:15px;font-weight:800;color:var(--ink)">132만</div>
+          <div style="font-size:10.5px;color:var(--ink3);margin-top:2px">메타+SA</div>
+        </div>
+      </div>
+
+      <!-- 플라잉 캠페인 데이터 -->
+      <div class="act-data-wrap" style="margin-top:8px">
+        <div style="font-size:11px;font-weight:700;color:var(--ink3);margin-bottom:8px">📋 메타 캠페인 주차별 성과</div>
+        <table class="act-data-tbl">
+          <thead><tr><th>주차</th><th>광고비</th><th>아임웹 매출</th><th>ROAS</th><th>전환</th></tr></thead>
+          <tbody>
+            <tr class="group-hdr camp"><td colspan="5">📢 <strong>목편한케어플라잉 메타 캠페인</strong></td></tr>
+            <tr><td>4월 4W</td><td>38.4만</td><td class="g">47.9만</td><td class="y">1.25</td><td>5건</td></tr>
+            <tr><td>4월 5W</td><td>104.9만</td><td class="g">153.0만</td><td class="g">1.46</td><td>16건</td></tr>
+            <tr class="row-star"><td><strong>5월 1W ★</strong></td><td>106.7만</td><td class="y">127.4만</td><td class="y"><strong>1.19</strong></td><td>11건</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px;background:rgba(220,38,38,0.05);border:1px solid rgba(220,38,38,0.15);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--ink2);line-height:1.7">
+          ⚠️ <strong>기존 고효율 광고 재 라이브 효율 저조한 상황</strong><br>
+          다만, <strong>재고(6,700개) 고려해 일부 리소스 목플라잉 투입</strong>(목SKU 고효율 프레임 적용) 검토 중<br>
+          <span style="font-size:11.5px;color:var(--ink3)">→ 팔꿈치 신제품 준비 완료 후 진행</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 팔꿈치 마사지기 (신제품 런칭) ── -->
+  <div class="product-block" style="margin-top:14px">
+    <div class="product-block-hdr">
+      <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--think);color:#fff;font-family:'Noto Sans KR',sans-serif">NEW</span>
+      <span style="font-size:14px;font-weight:700">팔꿈치 마사지기 — 신제품 런칭 준비</span>
+    </div>
+    <div class="product-block-body">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+        <span style="font-size:11.5px;font-weight:700;padding:3px 12px;border-radius:20px;background:rgba(124,58,237,0.1);color:var(--think)">메인 소구점: 팔꿈치 통증 / 테니스 엘보</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+        <div class="action-col">
+          <div class="action-col-title goal" style="color:var(--think)">🎬 Vi 내부 콘텐츠 (총 5건)</div>
+          <div class="action-col-body">
+            <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+              <div><strong>1팀 3건</strong> — 스토리라인 기반 질병 소구 콘텐츠</div>
+            </div>
+            <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+              <div><strong>2팀 2건</strong> — 스토리라인 기반 질병 소구 콘텐츠</div>
+            </div>
+            <div style="margin-top:8px;padding:8px 10px;background:rgba(124,58,237,0.06);border-radius:6px;font-size:11.5px;color:var(--ink2);line-height:1.6">
+              내부 콘텐츠 방향: <strong>질병(+헬스) 중심</strong>
+            </div>
+          </div>
+        </div>
+        <div class="action-col">
+          <div class="action-col-title goal" style="color:var(--think)">🖼️ Img 페르소나·질병 키워드 테스트 (20건)</div>
+          <div class="action-col-body">
+            <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+              <div>페르소나 타겟 이미지 소재 테스트</div>
+            </div>
+            <div class="action-item"><div class="action-dot" style="background:var(--think)"></div>
+              <div>테니스 엘보·팔꿈치 통증 질병 키워드 확장 테스트</div>
+            </div>
+            <div style="margin-top:8px">
+              <a href="https://www.notion.so/35ed64378d4880b9ad50d6928c6e4327" target="_blank"
+                 style="display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.2);border-radius:6px;text-decoration:none;font-size:11.5px;color:var(--think);"
+                 onmouseover="this.style.background='rgba(124,58,237,0.12)'" onmouseout="this.style.background='rgba(124,58,237,0.07)'">
+                <span style="font-size:12px">📎</span>
+                <span style="font-weight:600">Img 소재 기획</span>
+                <span style="opacity:.6">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="action-col">
+          <div class="action-col-title goal" style="color:var(--think)">👥 UGC · PA · 퍼포먼스</div>
+          <div class="action-col-body">
+            <div style="font-size:11px;font-weight:700;color:var(--ink3);margin-bottom:6px">UGC · PA 방향: <strong style="color:var(--ink)">운동 중심</strong></div>
+            <div class="action-item"><div class="action-dot" style="background:var(--warn)"></div>
+              <div>
+                <strong>PA</strong> — BM팀 운동 카테고리<br>
+                <a href="https://accounts.google.com/v3/signin/confirmidentifier?authuser=0&continue=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1wtszERva3YGr3Lq1ZBd_Ew2HVN6viLtlmQdhrGWT4m8%2Fedit%3Fgid%3D1905912914&dsh=S-633841539%3A1778633528199926&followup=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1wtszERva3YGr3Lq1ZBd_Ew2HVN6viLtlmQdhrGWT4m8%2Fedit%3Fgid%3D1905912914&ltmpl=sheets&osid=1&passive=1209600&service=wise&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AWa2PasrQ0VSOl8Tqfp7LRUfnyI22AQbMKkr1VzFwgtuCK7GQJiTohfvP7hf9ioql7wgSxGOl5670A#gid=1905912914" target="_blank"
+                   style="display:inline-flex;align-items:center;gap:5px;padding:5px 9px;background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.2);border-radius:5px;text-decoration:none;font-size:11px;color:var(--think);margin-top:4px"
+                   onmouseover="this.style.background='rgba(124,58,237,0.13)'" onmouseout="this.style.background='rgba(124,58,237,0.07)'">
+                  <span style="font-size:11px">📋</span>
+                  <span style="font-weight:600">PA 오퍼레이션 시트</span>
+                  <span style="opacity:.6">↗</span>
+                </a>
+              </div>
+            </div>
+            <div class="action-item"><div class="action-dot" style="background:var(--warn)"></div>
+              <div><strong>UGC</strong> — 테니스·골프 등 운동 카테고리<br>
+                <span style="font-size:11.5px;color:var(--ink3)">상세 내용 바이럴파트 체크 중</span>
+              </div>
+            </div>
+            <div style="border-top:1px dashed var(--border);margin-top:8px;padding-top:8px">
+              <div style="font-size:11px;font-weight:700;color:var(--ink3);margin-bottom:5px">📢 퍼포먼스</div>
+              <div class="action-item" style="margin-bottom:0"><div class="action-dot" style="background:var(--think)"></div>
+                <div style="font-size:12px;color:var(--ink2)">SA · 브랜드 검색 · 매체 캠페인 믹스<br>
+                  <span style="font-size:11.5px;color:var(--ink3)">5/15 기획 예정</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px">
+        <a href="https://www.notion.so/34fd64378d4880b4ab93e152c9448346" target="_blank"
+           style="display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:var(--card2);border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:12px;color:var(--ink2);transition:border-color .15s"
+           onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:13px">📝</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--ink)">콘텐츠 방향성</div>
+            <div style="font-size:10.5px;color:var(--ink3)">notion.so</div>
+          </div>
+          <span style="color:var(--ink3);margin-left:2px">↗</span>
+        </a>
+        <a href="https://docs.google.com/spreadsheets/d/1TNGLAS7Ic-mP8umV_41Lv6SLrhEDtDd3Ph9r8II9sHM/edit?gid=1196732655#gid=1196732655" target="_blank"
+           style="display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:var(--card2);border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:12px;color:var(--ink2);transition:border-color .15s"
+           onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:13px">📋</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--ink)">오퍼레이션 시트</div>
+            <div style="font-size:10.5px;color:var(--ink3)">docs.google.com/spreadsheets</div>
+          </div>
+          <span style="color:var(--ink3);margin-left:2px">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 프로모션 캠페인 성과 ── -->
+  <div class="product-block" style="margin-top:14px">
+    <div class="product-block-hdr">
+      <span style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;background:var(--warn);color:#fff;font-family:'Noto Sans KR',sans-serif">PROMO</span>
+      <span style="font-size:14px;font-weight:700">프로모션 캠페인 성과 (메타 RAW 기준)</span>
+      <span style="font-size:11px;color:var(--ink3);margin-left:auto">목마사지베개V2_프로모션_논타겟팅_260417 캠페인 합산</span>
+    </div>
+    <div class="product-block-body">
+
+      <!-- 주차별 합산 테이블 -->
+      <div style="overflow-x:auto;margin-bottom:14px">
+        <table class="act-data-tbl" style="font-size:12px">
+          <thead>
+            <tr>
+              <th style="width:90px">주차</th>
+              <th>광고비</th><th>아임웹 매출</th><th>아임웹 ROAS</th><th>재방문율</th><th>CPC</th><th>CPM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-cr">
+              <td>4월 4주차</td>
+              <td>246만</td><td class="y">275만</td><td class="y">1.12</td><td>71%</td><td>1,494</td><td>31,451</td>
+            </tr>
+            <tr class="row-cr">
+              <td>4월 5주차</td>
+              <td>214만</td><td class="y">408만</td><td class="y">1.91</td><td>63%</td><td>1,535</td><td>30,781</td>
+            </tr>
+            <tr class="row-cr-star">
+              <td><strong>5월 1주차 ★</strong></td>
+              <td>301만</td><td class="g"><strong>623만</strong></td><td class="g"><strong>2.07 ↑</strong></td><td>63%</td><td>1,751</td><td>32,828</td>
+            </tr>
+            <tr class="row-cr">
+              <td>5월 2주차</td>
+              <td>126만</td><td class="y">236만</td><td class="y">1.87</td><td>64%</td><td>1,977</td><td>31,641</td>
+            </tr>
+            <tr class="row-ttl" style="border-top:1px dashed var(--border2)">
+              <td class="tag-ttl"><strong>캠페인 총계</strong></td>
+              <td><strong>887만</strong></td><td class="g"><strong>1,542만</strong></td><td class="g"><strong>1.74</strong></td><td>66%</td><td>1,644</td><td>31,764</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 고효율 소재 인사이트 -->
+      <div>
+
+        <!-- 인사이트 텍스트 -->
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:11.5px;font-weight:700;color:var(--warn)">📌 고효율 소재 인사이트</div>
+          <div style="font-size:11px;color:var(--ink3);font-weight:600">소재명: 목마사지베개V2_최현진_VI_프로모션(OS)_가정의달C</div>
+          <div style="display:flex;align-items:flex-start;gap:5px;padding:6px 9px;background:var(--card2);border:1px solid var(--border);border-radius:6px;margin-top:2px">
+            <span style="font-size:11px;flex-shrink:0;color:var(--ink3)">📁</span>
+            <span style="font-size:10.5px;color:var(--ink3);word-break:break-all;font-family:monospace;line-height:1.5">\\192.168.0.6\광고\00_퍼포먼스(슬룸)\1. 제품광고\프로모션\2026\4월_가정의달프로모션\3주차_최현진\가정의달\영상</span>
+          </div>
+          <div class="action-item"><div class="action-dot" style="background:var(--warn)"></div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.65">띠배너 외 <strong>프로모션 내용을 충실히 후킹성 있게 초반에 소구</strong>한 콘텐츠는 프로모션 기간 내 충분한 성과를 가져올 수 있음 — 이런 <strong>프로모션 고효율 영상 포맷/프레임워크 확보</strong>가 지속적으로 필요</div>
+          </div>
+          <div class="action-item"><div class="action-dot" style="background:var(--warn)"></div>
+            <div style="font-size:12px;color:var(--ink2);line-height:1.65">프로모션 소재도 <strong>머신러닝 최적화 기간 최소 1주 이상 보장 필요</strong> — 2주차부터 지속적으로 고효율 성과 확보하여 유지 중</div>
+          </div>
+          <div style="background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.2);border-radius:7px;padding:9px 12px;font-size:11.5px;color:var(--ink2)">
+            ✅ ROAS 추이: 4W <strong>1.12</strong> → 5W <strong>1.91</strong> → 5월1W <strong>2.29</strong> (가정의달C 소재 기준)
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SECTION 03 · 기타사항 ══ -->
+<div class="sec" style="padding:0 48px;max-width:1200px;margin-left:auto;margin-right:auto;box-sizing:border-box">
+  <div class="sec-hdr">
+    <span class="sec-num">03</span>
+    <span class="sec-title">기타사항</span>
+  </div>
+
+  <!-- 01 콘텐츠 스케줄 -->
+  <div style="background:var(--card);border:1px solid var(--border);border-left:4px solid var(--v1);border-radius:10px;padding:18px 22px;margin-bottom:14px">
+    <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:10px">01. 05월 콘텐츠 주차별 스케줄 참고</div>
+    <a href="https://docs.google.com/spreadsheets/d/1_U3gcXBnnEmtMzFXbvV4VNgno24f-gmTGVdLzrjQhmE/edit?gid=140180705#gid=140180705" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px; background: var(--card2); border-color: var(--border); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 8px; text-decoration: none; width: fit-content; transition: border-color 0.15s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+      <span style="font-size:15px">📋</span>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--ink)">[2026Y 2Q] 라이프_마케팅 1팀 보드 — 콘텐츠 스케줄</div>
+        <div style="font-size:11px;color:var(--ink3);margin-top:1px">docs.google.com/spreadsheets · 새 탭에서 열기</div>
+      </div>
+      <span style="font-size:12px;color:var(--ink3);margin-left:4px">↗</span>
+    </a>
+  </div>
+
+  <!-- 02 PA 진행비용 검토 -->
+  <div style="background:var(--card);border:1px solid var(--border);border-left:4px solid var(--think);border-radius:10px;padding:18px 22px">
+    <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:14px">02. PA 진행비용 관련 검토</div>
+
+    <!-- 사전 체크 사항 -->
+    <div style="font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:.04em;margin-bottom:8px">📋 사전 체크 사항</div>
+    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px">
+      <div class="action-item" style="margin-bottom:0"><div class="action-dot" style="background:var(--done)"></div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.65">신제품별 <strong>1,500만 원 마케팅 가용예산</strong> 확보 — 목V2는 임상 진행하지 않아 <strong>전액 활용 가능</strong> 확인</div>
+      </div>
+      <div class="action-item" style="margin-bottom:0"><div class="action-dot" style="background:var(--done)"></div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.65">PA 진행 평균 비용 <strong>40~45만 원 내외</strong> 확인</div>
+      </div>
+    </div>
+
+    <!-- 진행 방향성 문의 -->
+    <div style="font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:.04em;margin-bottom:10px">💬 진행 방향성 검토 요청</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+      <!-- 1안 -->
+      <div style="background:rgba(37,99,235,0.05);border:1px solid rgba(37,99,235,0.2);border-radius:9px;padding:14px 16px">
+        <div style="font-size:11.5px;font-weight:800;color:var(--v1);margin-bottom:8px">① 사전 예산 총량 설정 후 팀 내 유연 집행</div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.7">
+          캠페인 목표 수량 내 예산을 사전에 확정하고, 해당 예산 범위 안에서 팀이 유연하게 크리에이터를 선정·진행<br><br>
+          <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,0.1);border-radius:5px;padding:3px 10px;font-size:11.5px;font-weight:700;color:var(--v1)">
+            목표 14건 × 45만 원 = <strong>630만 원</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- 2안 -->
+      <div style="background:rgba(124,58,237,0.05);border:1px solid rgba(124,58,237,0.2);border-radius:9px;padding:14px 16px">
+        <div style="font-size:11.5px;font-weight:800;color:var(--think);margin-bottom:8px">② 건별 기준 금액 설정 후 선진행</div>
+        <div style="font-size:12px;color:var(--ink2);line-height:1.7">
+          1건당 진행비 기준 금액을 설정하고, <strong>해당 금액 미만의 경우 선진행 후 데이터 보고</strong> 방식으로 운영<br><br>
+          <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,0.1);border-radius:5px;padding:3px 10px;font-size:11.5px;font-weight:700;color:var(--think)">
+            예: nn만 원 미만 → 선진행 후 성과 보고
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</div><!-- end .wrap -->
+
+<div id="ctrl-panel">
+  <button id="edit-toggle" onclick="toggleEdit()" class="">편집</button>
+  <button id="save-btn" onclick="saveReport()">저장</button>
+</div>
+<div id="save-toast">저장 완료</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function() {
+  function initChart() {
+    var ctx = document.getElementById('chartMain');
+    if (!ctx || typeof Chart === 'undefined') return;
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['4월 3W','4월 4W','4월 5W','5월 1W ★'],
+        datasets: [
+          {
+            label: '총매출(만원)',
+            data: [11542, 10521, 9880, 11498],
+            backgroundColor: ['rgba(37,99,235,0.15)','rgba(220,38,38,0.2)','rgba(217,119,6,0.35)','rgba(22,163,74,0.5)'],
+            borderColor:      ['rgba(37,99,235,0.5)','rgba(220,38,38,0.7)','rgba(217,119,6,0.8)','rgba(22,163,74,0.9)'],
+            borderWidth: 1.5, borderRadius: 5, yAxisID: 'y', order: 2
+          },
+          {
+            label: '공헌이익(만원)',
+            data: [2815, 765, 1874, 2226],
+            backgroundColor: ['rgba(22,163,74,0.65)','rgba(217,119,6,0.55)','rgba(22,163,74,0.5)','rgba(22,163,74,0.75)'],
+            borderColor:      ['rgba(22,163,74,1)','rgba(217,119,6,0.9)','rgba(22,163,74,0.8)','rgba(22,163,74,1)'],
+            borderWidth: 1.5, borderRadius: 5, yAxisID: 'y', order: 1
+          },
+          {
+            label: 'ROAS',
+            data: [2.13, 1.62, 2.01, 1.97],
+            type: 'line',
+            borderColor: 'rgba(217,119,6,0.9)',
+            backgroundColor: 'rgba(217,119,6,0.08)',
+            pointBackgroundColor: ['rgba(217,119,6,0.4)','rgba(217,119,6,0.7)','rgba(217,119,6,1)','rgba(22,163,74,0.9)'],
+            pointRadius: [4,4,7,7], pointBorderWidth: 2,
+            borderWidth: 2, tension: 0.35, yAxisID: 'y2', order: 0
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'top', labels: { font: { size: 11 }, color: '#6b5f48', boxWidth: 12 } },
+          tooltip: { callbacks: { label: function(c) {
+            var ciRates = [24, 7, 19, 19];
+            if (c.dataset.label === 'ROAS') return ' ROAS: ' + c.raw;
+            if (c.dataset.label === '공헌이익(만원)') {
+              var rate = ciRates[c.dataIndex];
+              return ' 공헌이익: ' + (c.raw >= 0 ? '+' : '') + c.raw.toLocaleString() + '만 (' + rate + '%)';
+            }
+            return ' ' + c.dataset.label + ': ' + c.raw.toLocaleString() + '만';
+          }}}
+        },
+        scales: {
+          y: { position: 'left', grid: { color: 'rgba(0,0,0,0.05)' },
+               ticks: { font: { size: 10 }, color: '#888', callback: function(v) { return v.toLocaleString() + '만'; } } },
+          y2: { position: 'right', grid: { drawOnChartArea: false }, min: 0, max: 2.5,
+                ticks: { font: { size: 10 }, color: '#d97706', callback: function(v) { return v.toFixed(2); } } },
+          x: { ticks: { font: { size: 11 }, color: '#4a4a4a' }, grid: { display: false } }
+        }
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChart);
+  } else { initChart(); }
+})();
+</script>
+<script>
+function switchActTab(product, tabId, btn) {
+  var bar = document.getElementById(product + '-tab-bar');
+  if (!bar) return;
+  bar.querySelectorAll('.act-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  var prefix = product + '-';
+  document.querySelectorAll('.act-tab-panel').forEach(function(p) {
+    if (p.id && p.id.indexOf(prefix) === 0) p.classList.remove('active');
+  });
+  var target = document.getElementById(product + '-' + tabId);
+  if (target) target.classList.add('active');
+}
+
+var EDIT_SELS = [
+  '.hdr-title','.hdr-week','.hdr-meta',
+  '.sec-title',
+  '.action-item > div:last-child',
+  '.issue-title','.issue-desc',
+  '.think-q','.think-context',
+  'tbody td','thead th','.act-camp-val',
+  '.action-col-body',
+];
+var editOn = false;
+
+function getEditables() {
+  var els = [];
+  EDIT_SELS.forEach(function(s) {
+    document.querySelectorAll(s).forEach(function(el) { els.push(el); });
+  });
+  return els;
+}
+
+function toggleEdit() {
+  editOn = !editOn;
+  var btn = document.getElementById('edit-toggle');
+  var els = getEditables();
+  if (editOn) {
+    btn.textContent = '편집 중'; btn.classList.add('on');
+    els.forEach(function(el) { el.contentEditable = 'true'; });
+  } else {
+    btn.textContent = '편집'; btn.classList.remove('on');
+    els.forEach(function(el) { el.contentEditable = 'false'; el.blur(); });
+  }
+}
+
+function saveReport() {
+  var clone = document.documentElement.cloneNode(true);
+  clone.querySelectorAll('[contenteditable]').forEach(function(el) { el.removeAttribute('contenteditable'); });
+  var editBtn = clone.querySelector('#edit-toggle');
+  if (editBtn) { editBtn.textContent = '편집'; editBtn.classList.remove('on'); }
+  var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  var blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = '슬룸_목베개플러스_주간보고_4월5주차.html';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+  var toast = document.getElementById('save-toast');
+  toast.textContent = '저장 완료';
+  toast.style.display = 'block';
+  setTimeout(function() { toast.style.display = 'none'; }, 3000);
+}
+</script>
+
+
+
+</body></html>
